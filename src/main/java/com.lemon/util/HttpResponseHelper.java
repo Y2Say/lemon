@@ -37,6 +37,7 @@ public class HttpResponseHelper {
         return returnString;
     }
 
+
     public static String successInfoInbox(String dataString) {
         HashMap hashMap = new HashMap();
         hashMap.put("localMessage", dataString);

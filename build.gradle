@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: 'org.flywaydb.flyway'
+
 
 sourceCompatibility = 1.8
 version = "1.0"
@@ -22,7 +22,7 @@ ext {
     fastJsonVersion = "1.2.32"
     apacheOroVersion = "2.0.8"
     javaxServletAPIVersion = "4.0.0-b07"
-    mysqlJavaConnectorVersion = "5.6"
+    mysqlJavaConnectorVersion = "5.1.13"
     druidVersion = "1.0.31"
     hibernateVersion = "5.2.10.Final"
     siteMeshVersion = "3.0.1"
@@ -45,7 +45,7 @@ buildscript {
 
     dependencies {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
-        classpath 'mysql:mysql-connector-java:5.6'
+        classpath 'mysql:mysql-connector-java:5.1.13'
     }
 }
 

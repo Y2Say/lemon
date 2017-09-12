@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,7 +25,8 @@ public class PersonService {
     @Qualifier("com.lemon.repository.IPersonRepository")
     @Autowired
     private IPersonRepository personRepository;
-/*String name,String password,String sex,String phone,String identity,String city,String sign,String position*/
+
+    @Transactional
     public void addPerson(PersonEntity person){
         PersonEntity personEntity = new PersonEntity();
         personEntity.setId(UUIDString.genUUID());
