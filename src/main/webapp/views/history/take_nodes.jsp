@@ -17,8 +17,6 @@
         <div class="layui-timeline-content layui-text">
             <h3 class="layui-timeline-title">8月18日</h3>
             <p>
-                layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
-                <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
                 <br>无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 <i class="layui-icon"></i>
             </p>
         </div>
@@ -39,7 +37,6 @@
         <div class="layui-timeline-content layui-text">
             <h3 class="layui-timeline-title">8月15日</h3>
             <p>
-                中国人民抗日战争胜利72周年
                 <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
                 <br>铭记、感恩
                 <br>所有为中华民族浴血奋战的英雄将士

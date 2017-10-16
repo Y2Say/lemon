@@ -8,6 +8,7 @@ import com.lemon.util.HttpResponseHelper;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 @Log4j2
 @Data
-@RestController("com.lemon.controller.PersonController")
+@Controller("com.lemon.controller.PersonController")
 public class PersonController {
     @Autowired
     private PersonService personService;
@@ -34,7 +35,7 @@ public class PersonController {
     @Autowired
     private HttpServletRequest request;
 
-    @PostMapping(value = "/person/add")
+    @RequestMapping(value = "/person/add",method = RequestMethod.POST)
     @ResponseBody
     public String addPerson(@RequestBody PersonEntity personEntity) throws ControllerException {
 
@@ -44,7 +45,7 @@ public class PersonController {
 
     }
 
-    @GetMapping(value = "/person/list")
+    @RequestMapping(value = "/person/list",method = RequestMethod.GET)
     @ResponseBody
     public List<Map<String,Object>> findAllPerson() throws ControllerException {
         List<PersonEntity> personEntityList = personService.findPersonList();
@@ -63,10 +64,4 @@ public class PersonController {
         return list;
     }
 
-    public String uploadFile(@RequestPart("files") MultipartFile[] files){
-
-        personService.uploadFile(files);
-        return null;
-
-    }
 }

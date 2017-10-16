@@ -6,60 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%--
-<form class="form-horizontal">
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">name</label>
-        <div class="col-sm-6">
-            <input type="name" class="form-control" id="name" placeholder="name">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="sign" class="col-sm-2 control-label">sign</label>
-        <div class="col-sm-6">
-            <input type="sign" class="form-control" id="sign" placeholder="sign">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-6">
-            <input type="email" class="form-control" id="email" placeholder="Email">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="Password" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-6">
-            <input type="password" class="form-control" id="Password" placeholder="Password">
-        </div>
-    </div>
-    <div class="form-group">
-
-        <label class="col-sm-2 control-label">File input</label>
-        <div class="col-sm-6">
-            <input type="file" id="file1">
-            <input type="file" id="file2">
-            <input type="file" id="file3">
-            <input type="file" id="file4">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-6 col-sm-offset-2">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 60%;">
-                60%
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-6">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-    </div>
-</form>--%>
-
 <div class="layui-main">
 <div class="layui-upload">
     <button type="button" class="layui-btn" id="test002">多图片上传1</button>
@@ -141,24 +87,6 @@
 
                 }
             })
-            /*,done: function(res, index, upload){
-                if(res.code == 0){ //上传成功
-                    var tr = demoListView.find('tr#upload-'+ index)
-                        ,tds = tr.children();
-                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
-                    tds.eq(3).html(''); //清空操作
-                    delete files[index]; //删除文件队列已经上传成功的文件
-                    return;
-                }
-                this.error(index, upload);
-            }
-            ,error: function(index, upload){
-                var tr = demoListView.find('tr#upload-'+ index)
-                    ,tds = tr.children();
-                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
-                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
-            }*/
-
 
         //绑定原始文件域
         upload.render({

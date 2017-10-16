@@ -12,16 +12,12 @@
 <!-- 头部区域（可配合layui已有的水平导航） -->
 <%--<div class=""><input type="text" placeholder="搜索" class="layui-input search"/></div>--%>
 <ul class="layui-nav layui-layout-left top-nav-container">
-    <li class="layui-nav-item layui-this"><a href="javascript:void(0)"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe68e;</i>首页</a></li>
-    <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe62c;</i>版本信息</a></li>
-    <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe614;</i>设置</a></li>
+    <li class="layui-nav-item layui-this"><a href="<%=request.getContextPath()%>/view/person/person_list.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe68e;</i>首页</a></li>
+    <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/views/common/version_info.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe62c;</i>版本信息</a></li>
+    <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/views/common/settings.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe614;</i>设置</a></li>
     <li class="layui-nav-item">
-        <a href="javascript:void(0)"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe64c;</i>友情链接</a>
-        <%--<dl class="layui-nav-child">
-            <dd><a href="">来</a></dd>
-            <dd><a href="">吃</a></dd>
-            <dd><a href="">瓜</a></dd>
-        </dl>--%>
+        <a href="<%=request.getContextPath()%>/views/common/links.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe64c;</i>友情链接</a>
+
     </li>
 </ul>
 <ul class="layui-nav layui-layout-right">

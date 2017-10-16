@@ -8,6 +8,44 @@ layui.use(['layer', 'form', 'element'], function () {
         , element = layui.element
         , $ = layui.jquery
 
+
+  /*  var test = (function (a) {
+        this.a = a;
+        console.log("222222222:" + a);
+        return function (b) {
+            console.log("4444444:" + b);
+            return this.a + b;
+        }
+    }(function (a, b) {
+        console.log("555:" + a);
+        console.log("666666:" + b)
+        return a;
+
+    }(1, 2)));
+
+    console.log("11111111111:" + test(4));
+
+    var a = Array(100).join(",").split(",").map(function (item, index) {
+        return index;
+    });
+
+    console.log("a:" + a);
+    console.log("a的长度:" + a.length);
+
+    var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        sign = 1;
+    a.sort(function (a, b) {
+        //因为Math.random产生的数在0-1之间
+        //所以0.5两边的概率是相等的
+        //大于0.5时为升序，小于0.5时为降序
+        sign = (Math.random() > 0.5) ? 1 : -1;
+        return (a - b) * sign;
+
+    });
+
+    console.log("a:" + a);*/
+
+/*
     var gather = {
         //Ajax
         json: function (url, data, success) {
@@ -56,30 +94,18 @@ layui.use(['layer', 'form', 'element'], function () {
             ;
         });
         return false;
-    });
-    //监听提交
-    /*form.on('submit(add_person)', function(data){
-     layer.msg(JSON.stringify(data.field));
-     return false;
-     $.ajax({
-     type: 'post',
-     data: data,
-     url: '/person/add',
-     async: false,//默认为true
-     contentType: contentType,//默认为application/x-www-form-urlencoded
-     dataType: 'json',//默认为预期服务器返回的数据类型
-     processData: false,//默认为true*!/
-     success: function (data) {
-     showMessage("success", "操作成功");
-     },
-     error: function (data) {
-     showExceptionTip(data);
-     }
-     });
-     });*/
+    });*/
 
 
-
+    form.on('submit(add_person)', function (data) {
+        console.log("data:" + data.data);
+        var param = data;
+        HttpUtils.post_performer_data(param,function (data) {
+            if(data.data.status = 200){
+                layer.msg("data:"+data);
+            }
+        })
+    })
 
 
 })

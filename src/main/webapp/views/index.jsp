@@ -66,13 +66,13 @@
             , $ = layui.jquery
 
         form.on('submit(demo1)', function (data) {
-            location.href = contextPath + '/views/person/person_list.jsp'
+            location.href = ctx + '/views/person/person_list.jsp'
             return false;
         })
 
         /*var active= {
             notice: function () {*/
-                layer.open({
+                /*layer.open({
                     type: 1
                     ,
                     title: false
@@ -90,7 +90,7 @@
                     moveType: 1 //拖拽模式，0或者1
                     ,
                     content: '<div style="background-color: #393D49; color: #fff; font-weight: 300; padding-bottom: 3px;"><form class="layui-form" action=""> <div class="layui-form-item logo_style">Lemon </div> <div class="layui-form-item"> <label class="layui-form-label">用户名：</label> <div class="layui-input-block" style="margin-right: 40px;"><input type="text" name="name" id="name" class="layui-input input_style"/> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">密码：</label> <div class="layui-input-block" style="margin-right: 40px;"> <input type="text" name="password" id="password" class="layui-input input_style"/> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">确认密码：</label> <div class="layui-input-block" style="margin-right: 40px;"> <input type="text" name="repassword" id="repassword" class="layui-input input_style"/> </div> </div> </form></div>'
-                });
+                });*/
            /* }
         };*/
 
