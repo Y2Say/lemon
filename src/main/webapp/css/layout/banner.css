@@ -1,0 +1,39 @@
+.header{
+    background: #393D49;
+}
+
+.logo{
+    font-size:20px;
+    font-family: PingFangSC-Regular;
+    color:whitesmoke;
+    width:80px;
+    height:60px;
+    line-height: 60px;
+    z-index: 200;
+}
+
+.search{
+    background: #424652;
+    border-radius:0;
+    border:0;
+}
+.search:hover,.search:active,.search:focus{
+    border:1px solid #009688;
+    color:whitesmoke;
+
+}
+
+.nav_style{
+    position: absolute;
+    top:0;
+    right: 0;
+    background: none;
+    padding:0;
+    border-radius:0;
+}
+.nav_style .layui-nav-item{
+    margin:0 20px;
+    line-height: 60px;
+    height:60px;
+
+}

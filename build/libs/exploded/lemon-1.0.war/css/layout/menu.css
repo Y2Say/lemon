@@ -1,0 +1,29 @@
+.left_top{
+    margin-top: 20px;
+    margin-left: -20px;
+    text-align: center;
+}
+.left_avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.avatar_style{
+    display: block;
+    margin-top:10px;
+    margin-bottom: 10px;
+    font-size:12px;
+    font-family: PingFangSC-Regular;
+}
+.avatar_label{
+    text-align: center;
+    margin-left: 20px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width:80px;
+}
+.avatar_label:hover{
+    opacity: 1;
+    cursor: pointer;
+}
