@@ -10,7 +10,7 @@
 <link href="<%=request.getContextPath()%>/css/person/person_list.css" rel="stylesheet" />
 <script src="<%=request.getContextPath()%>/js/person/person_list.js"></script>
 <div class="list_title">用户列表</div>
-<table class="layui-table">
+<%--<table class="layui-table">
     <colgroup>
         <col width="15%">
         <col width="15%">
@@ -57,11 +57,7 @@
         <td><input type="text" class="layui-input" placeholder="在黑夜里迷路的人才能找到方向"/></td>
     </tr>
     </tbody>
-</table>
-
-<button type="button" class="layui-btn layui-btn-primary btn_save">保存</button>
-<button type="button" class="layui-btn layui-btn-primary btn_add_person">新增</button>
-<%--
+</table>--%>
 
 <table class="layui-table" lay-data="{height:313, url:'/person/list'}">
     <thead>
@@ -71,8 +67,18 @@
         <th lay-data="{field:'sex', width:80, sort: true}">性别</th>
         <th lay-data="{field:'city', width:80}">城市</th>
         <th lay-data="{field:'sign', width:177}">签名</th>
+        <th lay-data="{field:'position', width:80}">职位</th>
+        <th lay-data="{field:'identity', width:177}">PID</th>
     </tr>
     </thead>
 </table>
 
-<button type="button" class="layui-btn layui-btn-primary btn_add_person">新增</button>--%>
+
+
+
+<button type="button" class="layui-btn layui-btn-primary btn_save">保存</button>
+<button type="button" class="layui-btn layui-btn-primary btn_add_person">新增</button>
+
+
+
+

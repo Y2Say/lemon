@@ -70,9 +70,12 @@ layui.use(['layer', 'form', 'element','table'], function () {
         location.href = contextPath + '/views/person/add_person.jsp'
     })
 })*/
-layui.use('table', function(){
+var $;
+layui.config({
+    base : "${ctx}/js/"
+}).use(['jquery','table'], function(){
+    $ = layui.$;
     var table = layui.table
-    ,$=layui.jquery
 
     $(".btn_add_person").on('click',function () {
         location.href=contextPath+'/views/person/add_person.jsp';

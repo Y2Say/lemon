@@ -17,7 +17,6 @@
     <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/views/common/settings.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe614;</i>设置</a></li>
     <li class="layui-nav-item">
         <a href="<%=request.getContextPath()%>/views/common/links.jsp"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe64c;</i>友情链接</a>
-
     </li>
 </ul>
 <ul class="layui-nav layui-layout-right">

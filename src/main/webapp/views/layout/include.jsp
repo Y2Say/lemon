@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
@@ -14,6 +13,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/layui/css/layui.css">
 <script src="<%=request.getContextPath()%>/layui/layui.js"></script>
 <%--layui样式end--%>
-<script type="text/javascript">
-    var ctx = "<%=request.getContextPath()%>";
-</script>
+<%--<script type="text/javascript">
+    var contextPath = "<%=request.getContextPath()%>";
+</script>--%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
