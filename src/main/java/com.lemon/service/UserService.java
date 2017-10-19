@@ -42,7 +42,7 @@ public class UserService {
      * 用户列表
      * @return
      */
-    public List<Map<String, Object>> getUserList(){
+    public List<Map<String, Object>> getAllUser(){
         List<Map<String, Object>> list = new ArrayList<>();
         List<User> userList = userRepository.findAll();
         if (!CollectionUtils.isEmpty(userList)) {

@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
+
+import java.util.Enumeration;
 
 
 /**
@@ -20,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2
 @Data
 @Controller("com.lemon.controller.UserController")
-public class UserController {
+public class UserController extends BaseController{
 
     @Autowired
     private UserService userService;
@@ -38,13 +41,23 @@ public class UserController {
     @ResponseBody
     public String findAll() throws ControllerException {
         try {
-            return JsonUtilsHelper.objectToJsonString(userService.getUserList());
+            return JsonUtilsHelper.objectToJsonString(userService.getAllUser());
         } catch (JsonProcessingException e) {
             throw new ControllerException(e.getMessage());
         }
 
     }
-
+    @RequestMapping(value = "/logout")
+    public String logout() {
+        log.debug("开始登出");
+        Enumeration<String> eume = httpSession.getAttributeNames();
+        while (eume.hasMoreElements()) {
+            String name = eume.nextElement();
+            httpSession.removeAttribute(name);
+        }
+        log.debug("登出完成");
+        return "index";
+    }
 
 /*
     @RequestMapping("/logout.do")

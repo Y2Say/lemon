@@ -27,7 +27,7 @@
         </a>
         <dl class="layui-nav-child">
             <dd><a href="">help</a></dd>
-            <dd><a href="">say goodbye&nbsp;&nbsp;<i class="layui-icon">&#xe6af;</i></a></dd>
+            <dd><a href="${ctx}/views/index.jsp">say goodbye&nbsp;&nbsp;<i class="layui-icon">&#xe6af;</i></a></dd>
         </dl>
     </li>
     <li class="layui-nav-item"><a href=""><i class="layui-icon"></i></a></li>

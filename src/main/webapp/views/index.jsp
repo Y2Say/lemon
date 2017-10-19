@@ -139,7 +139,7 @@
             });
             //登陆成功
             if (ajaxReturnData==1) {
-                location.href="${ctx}/views/person/person_list.jsp";
+                location.href='${ctx}/views/person/person_list.jsp';
                 top.layer.close(loginLoading);
                 return false;
             } else {

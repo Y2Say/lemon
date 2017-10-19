@@ -1,18 +1,26 @@
 package com.lemon.service;
 
-import com.lemon.entity.PersonEntity;
+import com.lemon.entity.Person;
 import com.lemon.repository.IPersonRepository;
+
 import com.lemon.util.UUIDString;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.multipart.MultipartFile;
 
+
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * Created by lemon on 2017/8/15.
@@ -27,8 +35,8 @@ public class PersonService {
     private IPersonRepository personRepository;
 
     @Transactional
-    public void addPerson(PersonEntity person){
-        PersonEntity personEntity = new PersonEntity();
+    public void addPerson(Person person) {
+        Person personEntity = new Person();
         personEntity.setId(UUIDString.genUUID());
         personEntity.setName(person.getName());
         personEntity.setPassword(person.getPassword());
@@ -38,23 +46,31 @@ public class PersonService {
         personEntity.setSign(person.getSign());
         personEntity.setSex(person.getSex());
         personEntity.setPhone(person.getPhone());
+        personEntity.setCreatedTime(new Timestamp(new Date().getTime()));
         personRepository.save(personEntity);
 
     }
 
-    public List<PersonEntity> findPersonList(){
-
-        return personRepository.findAll();
-    }
-
-
-    public String uploadFile(MultipartFile[] files){
-
-        if(files.length>0){
-
+    public Page<Person> findAll(int page,int size,String orderType) {
+        Sort sort = new Sort(Sort.Direction.ASC, "createdTime");
+        if ("desc".equalsIgnoreCase(orderType)) {
+            sort = new Sort(Sort.Direction.DESC, "createdTime");
         }
-        return null;
+        Pageable pageable = new PageRequest(page < 0 ? 0 : page, size < 0 ? 20 : size, sort);
+        Page<Person> personPage = personRepository.findAll(pageable);
+
+        return personPage;
 
     }
+    public List<Person> findAllList() {
+
+        List<Person> personList = personRepository.findAll();
+        return personList;
+
+    }
+    public Long countAll(){
+        return personRepository.count();
+    }
+
 
 }
