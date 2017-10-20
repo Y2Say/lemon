@@ -35,3 +35,16 @@
 <link href="<%=request.getContextPath()%>/css/layout/banner.css" rel="stylesheet"/>
 
 
+<script type="text/javascript">
+    layui.config({
+        base : "${ctx}/js/"
+    }).use('jquery', function(){
+        var $ = layui.jquery;
+
+        //退出
+        $('#logout').on('click', function () {
+            var url = '${ctx}/views/index.jsp';
+            common.logout('退出登陆提示！', '你真的确定要退出系统吗？', url)
+        })
+    })
+</script>

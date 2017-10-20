@@ -82,7 +82,7 @@ layui.define(['layer'], function (exports) {
             });
         },
         /**退出*/
-        logOut: function (title, text, url, type, dataType, data, callback) {
+        logout: function (title, text, url, type, dataType, data, callback) {
             parent.layer.confirm(text, {
                 title: title,
                 resize: false,

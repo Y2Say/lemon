@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +39,9 @@ public class PersonController extends BaseController {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private HttpServletResponse response;
+
     /**
      * 新增
      * @param personEntity
@@ -47,8 +51,8 @@ public class PersonController extends BaseController {
     @RequestMapping(value = "/person/add", method = RequestMethod.POST)
     @ResponseBody
     public String addPerson(@RequestBody Person personEntity) throws ControllerException {
-
-        personService.addPerson(personEntity);
+        String userId = getUserID();
+        personService.addPerson(personEntity,userId);
         return HttpResponseHelper.successInfoInbox("操作成功");
 
 
@@ -62,8 +66,8 @@ public class PersonController extends BaseController {
     @RequestMapping(value = "/person/list", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public String findAllPerson() throws ControllerException {
-
-        List<Person> list = personService.findAllList();
+        String userId = getUserID();
+        List<Person> list = personService.findAll();
         Long count = personService.countAll();
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("code", 0);
@@ -111,6 +115,7 @@ public class PersonController extends BaseController {
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public String findAllList() {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return "{\n" +
                 "  \"users\":[\n" +
                 "        {\n" +

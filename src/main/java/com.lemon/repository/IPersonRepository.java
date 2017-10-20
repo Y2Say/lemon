@@ -18,4 +18,6 @@ public interface IPersonRepository extends JpaRepository<Person,String>, PagingA
 
     List<Person> findAll();
 
+    Person findByName(String name);
+
 }

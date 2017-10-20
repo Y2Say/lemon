@@ -34,8 +34,24 @@ public class PersonService {
     @Autowired
     private IPersonRepository personRepository;
 
+    /**
+     * 登录
+     * @param name
+     * @param password
+     * @return
+     */
+    public Person login(String name, String password) throws ServiceException {
+        Person person = personRepository.findByName(name);
+        if (person != null && password.equals(person.getPassword())) {
+          return person;
+        }else{
+            throw new ServiceException("exception.login.name.or.password.wrong");
+        }
+    }
+
+
     @Transactional
-    public void addPerson(Person person) {
+    public void addPerson(Person person,String userId) {
         Person personEntity = new Person();
         personEntity.setId(UUIDString.genUUID());
         personEntity.setName(person.getName());
@@ -46,12 +62,15 @@ public class PersonService {
         personEntity.setSign(person.getSign());
         personEntity.setSex(person.getSex());
         personEntity.setPhone(person.getPhone());
+        personEntity.setCreatedBy(userId);
+        personEntity.setUpdatedBy(userId);
         personEntity.setCreatedTime(new Timestamp(new Date().getTime()));
+        personEntity.setUpdatedTime(new Timestamp(new Date().getTime()));
         personRepository.save(personEntity);
 
     }
 
-    public Page<Person> findAll(int page,int size,String orderType) {
+    /*public Page<Person> findAll(int page,int size,String orderType) {
         Sort sort = new Sort(Sort.Direction.ASC, "createdTime");
         if ("desc".equalsIgnoreCase(orderType)) {
             sort = new Sort(Sort.Direction.DESC, "createdTime");
@@ -61,8 +80,8 @@ public class PersonService {
 
         return personPage;
 
-    }
-    public List<Person> findAllList() {
+    }*/
+    public List<Person> findAll() {
 
         List<Person> personList = personRepository.findAll();
         return personList;

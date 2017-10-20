@@ -38,7 +38,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户名：</label>
-            <div class="layui-input-block"><input type="text" name="userName" id="userName" class="layui-input input_style"/>
+            <div class="layui-input-block"><input type="text" name="name" id="name" class="layui-input input_style"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -59,58 +59,6 @@
     </form>
 </div>
 <script type="text/javascript">
-/*
-
-    layui.config({
-        base : "${ctx}/js/"
-    }).use(['form','layer','jquery'], function () {
-        var $ = layui.jquery,
-            form = layui.form;
-
-       /!* form.on('submit(demo1)', function (data) {
-            location.href =  + '/views/person/person_list.jsp'
-            return false;
-        })*!/
-
-        $(".btn_person_list").on("click",function () {
-            window.location.href = "${ctx}/person_list_page";
-            return false;
-        });
-
-     /!*   var active= {
-            notice: function () {
-                layer.open({
-                    type: 1
-                    ,
-                    title: false
-                    ,
-                    closeBtn: false
-                    ,
-                    area: '400px'
-                    ,
-                    shade: 0.8
-                    ,
-                    id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                    ,
-                    btn: ['注册', '登录']
-                    ,
-                    moveType: 1 //拖拽模式，0或者1
-                    ,
-                    content: '<div style="background-color: #393D49; color: #fff; font-weight: 300; padding-bottom: 3px;"><form class="layui-form" action=""> <div class="layui-form-item logo_style">Lemon </div> <div class="layui-form-item"> <label class="layui-form-label">用户名：</label> <div class="layui-input-block" style="margin-right: 40px;"><input type="text" name="name" id="name" class="layui-input input_style"/> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">密码：</label> <div class="layui-input-block" style="margin-right: 40px;"> <input type="text" name="password" id="password" class="layui-input input_style"/> </div> </div> <div class="layui-form-item"> <label class="layui-form-label">确认密码：</label> <div class="layui-input-block" style="margin-right: 40px;"> <input type="text" name="repassword" id="repassword" class="layui-input input_style"/> </div> </div> </form></div>'
-                });
-           }
-        };*!/
-
-      /!*  $('#layerDemo .layui-btn').on('click', function(){
-            var othis = $(this), method = othis.data('method');
-            active[method] ? active[method].call(this, othis) : '';
-        });*!/
-    });
-*/
-
-
-
-
     layui.config({
         base : "${ctx}/js/"
     }).use(['form','layer','jquery','common'], function () {
@@ -129,7 +77,7 @@
 
             //登陆验证
             $.ajax({
-                url: '${ctx}/user/login',
+                url: '${ctx}/login',
                 type: 'post',
                 async: false,
                 data: data.field,

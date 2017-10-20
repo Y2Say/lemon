@@ -23,6 +23,9 @@ public class Person extends Page implements Serializable {
     private String position;
     private String sex;
     private Timestamp createdTime;
+    private Timestamp updatedTime;
+    private String createdBy;
+    private String updatedBy;
 
     @Id
     @Column(name = "id", nullable = false, length = 36)
@@ -124,26 +127,60 @@ public class Person extends Page implements Serializable {
     public void setCreatedTime(Timestamp createdTime) {
         this.createdTime = createdTime;
     }
+    @Basic
+    @Column(name = "updated_time", nullable = false)
+    public Timestamp getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+    @Basic
+    @Column(name = "created_by", nullable = false)
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+    @Basic
+    @Column(name = "updated_by", nullable = false)
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Person that = (Person) o;
+        Person person = (Person) o;
 
-        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
-        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
-        if (getPassword() != null ? !getPassword().equals(that.getPassword()) : that.getPassword() != null)
+        if (getId() != null ? !getId().equals(person.getId()) : person.getId() != null) return false;
+        if (getName() != null ? !getName().equals(person.getName()) : person.getName() != null) return false;
+        if (getPassword() != null ? !getPassword().equals(person.getPassword()) : person.getPassword() != null)
             return false;
-        if (getIdentity() != null ? !getIdentity().equals(that.getIdentity()) : that.getIdentity() != null)
+        if (getIdentity() != null ? !getIdentity().equals(person.getIdentity()) : person.getIdentity() != null)
             return false;
-        if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) return false;
-        if (getCity() != null ? !getCity().equals(that.getCity()) : that.getCity() != null) return false;
-        if (getSign() != null ? !getSign().equals(that.getSign()) : that.getSign() != null) return false;
-        if (getPosition() != null ? !getPosition().equals(that.getPosition()) : that.getPosition() != null)
+        if (getPhone() != null ? !getPhone().equals(person.getPhone()) : person.getPhone() != null) return false;
+        if (getCity() != null ? !getCity().equals(person.getCity()) : person.getCity() != null) return false;
+        if (getSign() != null ? !getSign().equals(person.getSign()) : person.getSign() != null) return false;
+        if (getPosition() != null ? !getPosition().equals(person.getPosition()) : person.getPosition() != null)
             return false;
-        return getSex() != null ? getSex().equals(that.getSex()) : that.getSex() == null;
+        if (getSex() != null ? !getSex().equals(person.getSex()) : person.getSex() != null) return false;
+        if (getCreatedTime() != null ? !getCreatedTime().equals(person.getCreatedTime()) : person.getCreatedTime() != null)
+            return false;
+        if (getUpdatedTime() != null ? !getUpdatedTime().equals(person.getUpdatedTime()) : person.getUpdatedTime() != null)
+            return false;
+        if (getCreatedBy() != null ? !getCreatedBy().equals(person.getCreatedBy()) : person.getCreatedBy() != null)
+            return false;
+        return getUpdatedBy() != null ? getUpdatedBy().equals(person.getUpdatedBy()) : person.getUpdatedBy() == null;
     }
 
     @Override
@@ -157,6 +194,10 @@ public class Person extends Page implements Serializable {
         result = 31 * result + (getSign() != null ? getSign().hashCode() : 0);
         result = 31 * result + (getPosition() != null ? getPosition().hashCode() : 0);
         result = 31 * result + (getSex() != null ? getSex().hashCode() : 0);
+        result = 31 * result + (getCreatedTime() != null ? getCreatedTime().hashCode() : 0);
+        result = 31 * result + (getUpdatedTime() != null ? getUpdatedTime().hashCode() : 0);
+        result = 31 * result + (getCreatedBy() != null ? getCreatedBy().hashCode() : 0);
+        result = 31 * result + (getUpdatedBy() != null ? getUpdatedBy().hashCode() : 0);
         return result;
     }
 }

@@ -10,54 +10,6 @@
 <link href="<%=request.getContextPath()%>/css/person/person_list.css" rel="stylesheet"/>
 <script src="<%=request.getContextPath()%>/js/person/person_list.js"></script>
 <div class="list_title">用户列表</div>
-<%--<table class="layui-table">
-    <colgroup>
-        <col width="15%">
-        <col width="15%">
-        <col width="15%">
-        <col width="15%">
-        <col>
-    </colgroup>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>用户名</th>
-        <th>时间</th>
-        <th>城市</th>
-        <th>签名</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>1</td>
-        <td>orange</td>
-        <td>2016-11-29</td>
-        <td>上海</td>
-        <td><input type="text" class="layui-input" placeholder="在绝望里 虔诚的人 都长出了翅膀"/></td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>apple</td>
-        <td>2017-09-28</td>
-        <td>北京</td>
-        <td><input type="text" class="layui-input" placeholder="而长大以后 梦中飞舞的萤火虫，在我的身体 陪我做梦"/></td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>banana</td>
-        <td>2016-11-29</td>
-        <td>深圳</td>
-        <td><input type="text" class="layui-input" placeholder="然后飞行更遥远的地方"/></td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>stryberry</td>
-        <td>2016-11-28</td>
-        <td>杭州</td>
-        <td><input type="text" class="layui-input" placeholder="在黑夜里迷路的人才能找到方向"/></td>
-    </tr>
-    </tbody>
-</table>--%>
 <%--
 
 <table class="layui-table" id="person_table_list" lay-filter="person_table_id" lay-data="{initSort:{field:'id', type:'desc'},height:315, url:'${ctx}/person/list'}">
@@ -100,18 +52,19 @@
             url: '${ctx}/person/list',
             id: 'person_table_id',
             height: 'full-140',
+            width: '1699',
             skin: 'row',
             even: 'true',
             cols: [[
-                {checkbox: true, fixed: 'left'},
-                {field: 'id', title: 'ID', width: 120},
-                {field: 'name', title: '用户名', width: 220,},
-                {field: 'sex', title: '性别', width: 220},
-                {field: 'city', title: '城市', width: 220},
-                {field: 'position', title: '职位', width: 220},
-                {field: 'identity', title: 'PID', width: 130},
-                {field: 'sign', title: '签名', width: 300},
-                {fixed: 'right', title: '操作', align: 'center', width: 200}
+                {checkbox: true, fixed: 'left',width:'60'},
+                {field: 'id', title: 'ID', width: '200'},
+                {field: 'name', title: '用户名', width: '200'},
+                {field: 'sex', title: '性别', width: '200'},
+                {field: 'city', title: '城市', width: '200'},
+                {field: 'position', title: '职位', width: '200'},
+                {field: 'identity', title: 'PID', width: '200'},
+                {field: 'sign', title: '签名', width: '240'},
+                {fixed: 'right', title: '操作', align: 'center', width: '200'}
             ]],
             initSort: {
                 field: 'id' //排序字段，对应 cols 设定的各字段名
@@ -135,7 +88,7 @@
          });*/
         /**角色新增*/
         $(".btn_add_person").click(function () {
-            var url = ${ctx}+"/person/add";
+            var url = "${ctx}/person/add";
             common.cmsLayOpen('新增', url, '550px', '340px');
         });
 
