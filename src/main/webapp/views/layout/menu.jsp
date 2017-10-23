@@ -22,9 +22,9 @@
     <li class="layui-nav-item">
         <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #009688;">&#xe62a;</i>文章管理</a>
         <dl class="layui-nav-child">
-            <dd><a href="<%=request.getContextPath()%>/views/favorites/vegetables.jsp">文章列表</a></dd>
-            <dd><a href="<%=request.getContextPath()%>/views/favorites/flowers.jsp">上传文件</a></dd>
-            <dd><a href="<%=request.getContextPath()%>/views/favorites/animals.jsp">文本编辑</a></dd>
+            <dd><a href="<%=request.getContextPath()%>/views/article/article_list.jsp">文章列表</a></dd>
+            <dd><a href="<%=request.getContextPath()%>/views/article/article_file.jsp">上传文件</a></dd>
+            <dd><a href="<%=request.getContextPath()%>/views/article/article_edit.jsp">文本编辑</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">

@@ -35,7 +35,7 @@ public class ArticleService {
      */
     @Transactional
     public void addArticle(Article article) throws ServiceException {
-        if(article != null){
+        /*if(article != null){*/
             Article articleEntity = new Article();
 
             articleEntity.setId(UUIDString.genUUID());
@@ -46,9 +46,9 @@ public class ArticleService {
             articleEntity.setStatus(article.getStatus());
             articleEntity.setTitle(article.getTitle());
             articleRepository.save(articleEntity);
-        }else{
+        /*}else{
             throw new ServiceException("exception.article.null");
-        }
+        }*/
 
     }
 

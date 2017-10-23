@@ -16,6 +16,7 @@
 </div>
 <div class="layui-main">
     <div>内容设置</div>
+    <div>菜单管理</div>
 </div>
 </body>
 </html>
