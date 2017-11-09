@@ -1,6 +1,8 @@
 package com.lemon.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.zw201913.annotation.FileUpload;
+import com.github.zw201913.model.FileSaveResult;
 import com.lemon.entity.Person;
 import com.lemon.service.PersonService;
 
@@ -12,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +28,7 @@ import java.util.List;
  */
 @Log4j2
 @Data
-@Controller("com.lemon.controller.PersonController")
+@Controller
 public class PersonController extends BaseController {
     @Autowired
     private PersonService personService;
@@ -51,8 +54,6 @@ public class PersonController extends BaseController {
         String userId = getUserID();
         personService.addPerson(personEntity,userId);
         return HttpResponseHelper.successInfoInbox("操作成功");
-
-
     }
 
     /**
@@ -107,7 +108,34 @@ public class PersonController extends BaseController {
             throw new ControllerException(e.getMessage());
         }
     }*/
-
+    /**
+     * 上传单个文件
+     * @param file
+     * @return
+     */
+  /*  @RequestMapping(value = "/upload",method = RequestMethod.POST)
+    @ResponseBody
+    public String fileUpload(MultipartFile file){
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        log.debug("获取上传文件",file);
+        return HttpResponseHelper.successInfoInbox("上传成功");
+    }
+    *//**
+     * 上传多个文件
+     * @return
+     *//*
+    @FileUpload
+    @RequestMapping(value = "/upload_list",method = RequestMethod.POST)
+    @ResponseBody
+    public String filesUpload(@RequestPart("files")  MultipartFile[] files, FileSaveResult result){
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        log.debug("获取上传文件{}",files);
+        for (MultipartFile file : files) {
+            log.debug(file.getOriginalFilename());
+        };
+        return HttpResponseHelper.successInfoInbox("上传成功");
+    }
+*/
 
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody

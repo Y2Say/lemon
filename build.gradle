@@ -146,7 +146,10 @@ dependencies {
             //  ------------------------------
 
 
-            "com.thetransactioncompany:cors-filter:2.6"
+            "com.thetransactioncompany:cors-filter:2.6",
+
+            "com.github.zw201913:fileupload:1.0.0"
+
     )
 
     testCompile group: 'junit', name: 'junit', version: '4.12'

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Log4j2
 @Data
-@Controller("com.lemon.controller.ModelAndView")
+@Controller
 public class ModelAndView {
     /**
      * 首页

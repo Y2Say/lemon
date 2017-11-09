@@ -26,19 +26,21 @@ public class SiteService {
 
     /**
      * 查询所有的网站
+     *
      * @return
      */
-    public List<Site> findAll(){
+    public List<Site> findAll() {
         return siteRepository.findAll();
     }
 
     /**
      * 新增一个网站链接
+     *
      * @param siteEntity
      * @param userId
      */
     @Transactional
-    public void addSite(Site siteEntity,String userId){
+    public Site addSite(Site siteEntity, String userId) {
         Site site = new Site();
         site.setId(UUID.randomUUID().toString());
         site.setSiteName(siteEntity.getSiteName());
@@ -47,42 +49,48 @@ public class SiteService {
         site.setCreatedTime(new Timestamp(Calendar.getInstance().getTime().getTime()));
         site.setUpdatedBy(userId);
         site.setUpdatedTime(new Timestamp(Calendar.getInstance().getTime().getTime()));
-        siteRepository.save(site);
+        return siteRepository.save(site);
     }
 
     /**
      * 查询所有的链接个数
+     *
      * @return
      */
-    public Long count(){
+    public Long count() {
         return siteRepository.count();
     }
 
     /**
      * 修改一个网站链接信息
+     *
      * @param site
      * @param userId
      */
-    public void editSite(Site site,String userId){
+    public Site editSite(Site site, String userId) throws ServiceException {
         Site site1 = siteRepository.findOne(site.getId());
-        if(site1 != null && userId.equals(site1.getCreatedBy())){
+        if (site1 != null && userId.equals(site1.getCreatedBy())) {
             site1.setSiteName(site.getSiteName());
             site1.setSiteUrl(site.getSiteUrl());
             site1.setUpdatedTime(new Timestamp(Calendar.getInstance().getTime().getTime()));
             site1.setUpdatedBy(userId);
-            siteRepository.save(site1);
+            return siteRepository.save(site1);
+        } else {
+            throw new ServiceException("exception.site.null");
         }
     }
 
     /**
      * 删除一个网站链接
+     *
      * @param userId
      * @param siteId
      */
-    public void deleteSite(String userId,String siteId){
+    public void deleteSite(String userId, String siteId) {
         Site site = siteRepository.findOne(siteId);
-        if(site != null && userId.equals(site.getCreatedBy())){
+        if (site != null && userId.equals(site.getCreatedBy())) {
             siteRepository.delete(siteId);
+
         }
     }
 }

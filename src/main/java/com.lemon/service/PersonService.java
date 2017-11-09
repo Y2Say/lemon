@@ -27,10 +27,9 @@ import java.util.List;
  */
 @Log4j2
 @Data
-@Service("com.lemon.service.PersonService")
+@Service
 public class PersonService {
 
-    @Qualifier("com.lemon.repository.IPersonRepository")
     @Autowired
     private IPersonRepository personRepository;
 
@@ -50,6 +49,11 @@ public class PersonService {
     }
 
 
+    /**
+     * 新增
+     * @param person
+     * @param userId
+     */
     @Transactional
     public void addPerson(Person person,String userId) {
         Person personEntity = new Person();
@@ -81,12 +85,22 @@ public class PersonService {
         return personPage;
 
     }*/
+
+    /**
+     * 列表
+     * @return
+     */
     public List<Person> findAll() {
 
         List<Person> personList = personRepository.findAll();
         return personList;
 
     }
+
+    /**
+     * 总数量
+     * @return
+     */
     public Long countAll(){
         return personRepository.count();
     }

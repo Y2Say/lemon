@@ -21,7 +21,7 @@ import java.util.List;
 @Log4j2
 @Data
 @RequestMapping("/mango")
-@Controller("com.lemon.controller.MangoController")
+@Controller
 public class MangoController {
     @Autowired
     private MangoService mangoService;

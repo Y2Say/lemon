@@ -2,6 +2,7 @@ package com.lemon.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lemon.entity.Site;
+import com.lemon.service.ServiceException;
 import com.lemon.service.SiteService;
 import com.lemon.util.HttpResponseHelper;
 import com.lemon.util.JsonUtilsHelper;
@@ -22,19 +23,34 @@ import java.util.*;
  */
 @Log4j2
 @Data
-@Controller("com.lemon.controller.SiteController")
+@Controller
 public class SiteController extends BaseController{
     @Autowired
     private SiteService siteService;
 
+    /**
+     * 新增一个网站链接
+     * @param siteEntity
+     * @return
+     * @throws ControllerException
+     */
     @RequestMapping(value = "/site/add",method = RequestMethod.POST)
     @ResponseBody
     public String addSite(Site siteEntity) throws ControllerException {
         String userId = getUserID();
-        siteService.addSite(siteEntity,userId);
-        return "添加成功";
+        Site site = siteService.addSite(siteEntity,userId);
+        try {
+            return JsonUtilsHelper.objectToJsonString(site);
+        } catch (JsonProcessingException e) {
+            throw new ControllerException(e.getMessage());
+        }
     }
 
+    /**
+     * 查询网站列表
+     * @return
+     * @throws ControllerException
+     */
     @RequestMapping(value = "/site/list", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public String findAllSite() throws ControllerException {
@@ -52,15 +68,33 @@ public class SiteController extends BaseController{
             throw new ControllerException(e.getMessage());
         }
     }
+
+    /**
+     * 编辑修改网站链接信息
+     * @param siteEntity
+     * @return
+     * @throws ControllerException
+     */
     @RequestMapping(value = "/site/edit", method = RequestMethod.POST)
     @ResponseBody
-    public String editSite(Site site) throws ControllerException {
+    public String editSite(Site siteEntity) throws ControllerException {
         String userId = getUserID();
-        siteService.editSite(site,userId);
-        return "修改成功";
+        try {
+            Site site = siteService.editSite(siteEntity,userId);
+            return HttpResponseHelper.successInfoInbox("操作成功");
+        } catch (ServiceException e) {
+            throw new ControllerException(e.getMessage());
+        }
+
 
     }
 
+    /**
+     * 删除一个网站链接
+     * @param id
+     * @return
+     * @throws ControllerException
+     */
     @RequestMapping(value = "/site/delete",method = RequestMethod.POST)
     @ResponseBody
     public String deleteSite(String id) throws ControllerException {

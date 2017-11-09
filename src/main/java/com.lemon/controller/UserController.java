@@ -47,25 +47,6 @@ public class UserController extends BaseController{
         }
 
     }
-    @RequestMapping(value = "/logout")
-    public String logout() {
-        log.debug("开始登出");
-        Enumeration<String> eume = httpSession.getAttributeNames();
-        while (eume.hasMoreElements()) {
-            String name = eume.nextElement();
-            httpSession.removeAttribute(name);
-        }
-        log.debug("登出完成");
-        return "index";
-    }
 
-/*
-    @RequestMapping("/logout.do")
-    public String logout(){
-        Subject currentUser = SecurityUtils.getSubject();
-        currentUser.logout();
-        return "login";
-
-    }*/
 
 }

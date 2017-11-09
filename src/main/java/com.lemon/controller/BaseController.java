@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
  * Created by jyj on 2017/10/19.
  */
 @Log4j2
-@Controller("com.lemon.controller.BaseController")
+@Controller
 public class BaseController {
     @Autowired
     protected HttpSession httpSession;

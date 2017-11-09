@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by jyj on 2017/10/16.
  */
-@Repository("com.lemon.repository.ISiteRepository")
+@Repository
 public interface ISiteRepository extends JpaRepository<Site,String>, PagingAndSortingRepository<Site,String> {
 }

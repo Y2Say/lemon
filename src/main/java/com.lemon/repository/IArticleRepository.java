@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by jyj on 2017/10/20.
  */
-@Repository("com.lemon.repository.IArticleRepository")
+@Repository
 public interface IArticleRepository extends JpaRepository<Article,String>, PagingAndSortingRepository<Article,String> {
 
+    Article findArticleById(String id);
 }

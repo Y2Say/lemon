@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by lemon on 2017/8/15.
  */
-@Repository("com.lemon.repository.IPersonRepository")
+@Repository
 public interface IPersonRepository extends JpaRepository<Person,String>, PagingAndSortingRepository<Person,String>{
 
     List<Person> findAll();

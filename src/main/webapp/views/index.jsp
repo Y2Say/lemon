@@ -74,19 +74,23 @@
             //记录ajax请求返回值
             var ajaxReturnData;
 
+            var personBean = {
+                name:$("[name = name]").val(),
+                password:$("[name = password]").val()
+            }
 
             //登陆验证
             $.ajax({
                 url: '${ctx}/login',
                 type: 'post',
                 async: false,
-                data: data.field,
+                data: personBean,
                 success: function (data) {
                     ajaxReturnData = data;
                 }
             });
             //登陆成功
-            if (ajaxReturnData==1) {
+            if (ajaxReturnData.status==200) {
                 location.href='${ctx}/views/person/person_list.jsp';
                 top.layer.close(loginLoading);
                 return false;

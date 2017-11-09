@@ -12,13 +12,13 @@ public class Article {
     private String id;
     private String title;
     private String author;
-    private String status;
-    private String visit;
+    private String style;
+   /* private String status;
+    private String visit;*/
     private Timestamp publishTime;
     private String content;
     @Id
     @Column(name = "id", nullable = false, length = 36)
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     public String getId() {
         return id;
     }
@@ -46,24 +46,35 @@ public class Article {
     public void setAuthor(String author) {
         this.author = author;
     }
+
     @Basic
-    @Column(name = "status", nullable = false, length = 128)
-    public String getStatus() {
-        return status;
+    @Column(name = "style",nullable = true,length = 128)
+    public String getStyle() {
+        return style;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    @Basic
-    @Column(name = "visit", nullable = false, length = 128)
-    public String getVisit() {
-        return visit;
+    public void setStyle(String style) {
+        this.style = style;
     }
 
-    public void setVisit(String visit) {
-        this.visit = visit;
-    }
+    /* @Basic
+        @Column(name = "status", nullable = false, length = 128)
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+        @Basic
+        @Column(name = "visit", nullable = false, length = 128)
+        public String getVisit() {
+            return visit;
+        }
+
+        public void setVisit(String visit) {
+            this.visit = visit;
+        }*/
     @Basic
     @Column(name = "publish_time", nullable = false)
     public Timestamp getPublishTime() {

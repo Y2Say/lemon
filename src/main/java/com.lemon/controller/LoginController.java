@@ -4,6 +4,7 @@ import com.lemon.entity.Person;
 import com.lemon.service.PersonService;
 
 import com.lemon.service.ServiceException;
+import com.lemon.util.HttpResponseHelper;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.Enumeration;
  */
 @Log4j2
 @Data
-@Controller("com.lemon.controller.LoginController")
+@Controller
 public class LoginController extends BaseController{
 
     @Autowired
@@ -28,14 +29,14 @@ public class LoginController extends BaseController{
 
     /**
      * 登录
-     * @param name
-     * @param password
      * @return
      * @throws ControllerException
      */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public int login(String name, String password) throws ControllerException {
+    public String login(Person personBean) throws ControllerException {
+        String name = personBean.getName();
+        String password = personBean.getPassword();
         if(StringUtils.isEmpty(name) || StringUtils.isEmpty(password)){
             throw new ControllerException("exception.login.name.or.password.null");
         }
@@ -45,7 +46,7 @@ public class LoginController extends BaseController{
             if(person != null){
                 httpSession.setAttribute("user_id", person.getId());
                 httpSession.setAttribute("user_name", person.getName());
-                return 1;
+                return HttpResponseHelper.successInfoInbox("登录成功！");
             }else{
                 throw new ControllerException("exception.login.name.or.password.wrong");
             }

@@ -1,6 +1,6 @@
 /**自定义模块*/
-layui.define(['layer'], function (exports) {
-    var $ = layui.jquery,
+layui.define(['layer','jquery'], function (exports) {
+    var $ = layui.$,
         layer = layui.layer;
     var CmsCommon = {
 
@@ -28,11 +28,13 @@ layui.define(['layer'], function (exports) {
                     async: false,
                     data : param,
                     success : function(data) {
-                        if(data.returnCode == 0000){
-                            top.layer.msg(data.returnMessage, {icon: 6});
+                        console.log("delete:"+data.data);
+                        if(data.status == 200){
+                            top.layer.msg(data.data.localMessage, {icon: 6});
+
                             location.reload();
                         }else{
-                            top.layer.msg(data.returnMessage,{icon: 5});
+                            top.layer.msg(data.data.localMessage,{icon: 5});
                         }
                     },error:function(data){
 

@@ -63,8 +63,9 @@
                 {field: 'id', title: 'ID', width: '200'},
                 {field: 'title', title: '文章标题', width: '250'},
                 {field: 'author', title: '发布人', width: '230'},
-                {field: 'status', title: '审核状态', width: '230'},
-                {field: 'visit', title: '浏览权限', width: '230'},
+                {field: 'style', title: '类型', width: '230'},
+                /*{field: 'status', title: '审核状态', width: '230'},
+                {field: 'visit', title: '浏览权限', width: '230'},*/
                 {field: 'publishTime', title: '发布时间', width: '250'},
                 {fixed: 'right', title: '操作', align: 'center', width: '250', toolbar: '#articleBar'}
             ]],
@@ -74,7 +75,7 @@
             }
         });
 
-        /**查询*/
+        //查询
         $(".search_btn").click(function () {
             //监听提交
             form.on('submit(articleSearchFilter)', function (data) {
@@ -88,146 +89,48 @@
             });
 
         });
-        /**角色新增*/
+
+
+
+        //新增
         $(".articleAdd_btn").click(function () {
-            var url = "${ctx}/article/add";
+            var url = "${ctx}/views/article/atricle_edit.jsp";
             common.cmsLayOpen('新增', url, '550px', '340px');
         });
 
+        /**监听工具条*/
+        table.on('tool(article_table_id)', function(obj){
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值
+
+            //公告详情
+            if(layEvent === 'article_detail') {
+                var articleId = data.id;
+                var url =  "${ctx}/article/detail?articleId="+articleId;
+                common.cmsLayOpenTip('文章详情',url,'100%','100%');
+
+                //公告删除
+            }else if(layEvent === 'article_delete') {
+                var articleId = data.id;
+                var url = "${ctx}/article/del";
+                var param = {articleId:articleId};
+                common.ajaxCmsConfirm('系统提示', '确定要删除当前文章吗?',url,param);
+
+            }
+        });
     });
 
 
 </script>
 
+<!--工具条 -->
+<script type="text/html" id="articleBar">
+    <div class="layui-btn-group">
+        <a class="layui-btn layui-btn-mini layui-btn-info  article_detail" lay-event="article_detail"><i class="layui-icon larry-icon larry-chaxun2"></i>详情</a>
+        <shiro:hasPermission name="eTDnjGAM">
+            <a class="layui-btn layui-btn-mini layui-btn-danger article_delete" lay-event="article_delete"><i class="layui-icon larry-icon larry-ttpodicon"></i>删除</a>
+        </shiro:hasPermission>
+    </div>
+</script>
 
-<%--<div class="layui-form news_list">
-    <table class="layui-table">
-        <colgroup>
-            <col width="50">
-            <col>
-            <col width="9%">
-            <col width="9%">
-            <col width="9%">
-            <col width="9%">
-            <col width="15%">
-        </colgroup>
-        <thead>
-        <tr>
-            <th><input type="checkbox" name lay-skin="primary" lay-filter="allChoose" id="allChoose">
-            <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                <i class="layui-icon"></i>
-            </div>
-            </th>
-            <th style="text-align: left">文章标题</th>
-            <th>发布人</th>
-            <th>审核状态</th>
-            <th>浏览权限</th>
-            <th>是否展示</th>
-            <th>发布时间</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody class="news_content">
-            <tr>
-                <td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose">
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                    <i class="layui-icon"></i>
-                </div></td>
-                <td align="left">css3动画实现</td>
-                <td>css</td>
-                <td>审核通过</td>
-                <td>开放浏览</td>
-                <td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow">
-                <div class="layui-unselect layui-form-switch choose_style" layui-skin="_switch">
-                    否
-                    <i class="layui-icon"></i>
-                </div>
-                </td>
-                <td>2017-10-16</td>
-                <td>
-                    <a class="layui-btn layui-btn-mini news_edit">
-                        <i class="layui-icon iconfont icon-edit">&#xe642;</i>编辑
-                    </a>
-                    <a class="layui-btn layui-btn-mini news_del">
-                        <i class="layui-icon icon-edit">&#xe640;</i>删除
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose">
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                        <i class="layui-icon"></i>
-                    </div></td>
-                <td align="left">css3动画实现</td>
-                <td>css</td>
-                <td>审核通过</td>
-                <td>开放浏览</td>
-                <td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow">
-                    <div class="layui-unselect layui-form-switch choose_style" layui-skin="_switch">
-                        是
-                        <i ></i>
-                    </div>
-                </td>
-                <td>2017-10-16</td>
-                <td>
-                    <a class="layui-btn layui-btn-mini news_edit">
-                        <i class="layui-icon iconfont icon-edit">&#xe642;</i>编辑
-                    </a>
-                    <a class="layui-btn layui-btn-mini news_del">
-                        <i class="layui-icon icon-edit">&#xe640;</i>删除
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose">
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                        <i class="layui-icon"></i>
-                    </div></td>
-                <td align="left">css3动画实现</td>
-                <td>css</td>
-                <td>审核通过</td>
-                <td>开放浏览</td>
-                <td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow">
-                    <div class="layui-unselect layui-form-switch choose_style" layui-skin="_switch">
-                        是
-                        <i ></i>
-                    </div>
-                </td>
-                <td>2017-10-16</td>
-                <td>
-                    <a class="layui-btn layui-btn-mini news_edit">
-                        <i class="layui-icon iconfont icon-edit">&#xe642;</i>编辑
-                    </a>
-                    <a class="layui-btn layui-btn-mini news_del">
-                        <i class="layui-icon icon-edit">&#xe640;</i>删除
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose">
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary">
-                        <i class="layui-icon"></i>
-                    </div></td>
-                <td align="left">css3动画实现</td>
-                <td>css</td>
-                <td>审核通过</td>
-                <td>开放浏览</td>
-                <td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow">
-                    <div class="layui-unselect layui-form-switch choose_style" layui-skin="_switch">
-                        否
-                        <i ></i>
-                    </div>
-                </td>
-                <td>2017-10-16</td>
-                <td>
-                    <a class="layui-btn layui-btn-mini news_edit">
-                        <i class="layui-icon iconfont icon-edit">&#xe642;</i>编辑
-                    </a>
-                    <a class="layui-btn layui-btn-mini news_del">
-                        <i class="layui-icon icon-edit">&#xe640;</i>删除
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>--%>
+
